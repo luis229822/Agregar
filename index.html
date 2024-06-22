@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nombres a una Lista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Agregar Nombres a la Lista</h2>
+        <input type="text" id="nameInput" placeholder="Ingresa un nombre">
+        <button onclick="addName()">Agregar</button>
+        <ul id="nameList"></ul>
+    </div>
+
+    <script>
+        function addName() {
+            var nameInput = document.getElementById('nameInput');
+            var nameList = document.getElementById('nameList');
+
+            if (nameInput.value.trim() !== "") {
+                var li = document.createElement('li');
+                li.textContent = nameInput.value;
+                nameList.appendChild(li);
+                nameInput.value = "";
+            } else {
+                alert("Por favor, ingresa un nombre.");
+            }
+        }
+
+        document.getElementById('nameInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addName();
+            }
+        });
+    </script>
+</body>
+</html>
